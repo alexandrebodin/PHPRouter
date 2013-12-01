@@ -1,4 +1,4 @@
 #PHPRouter
 
-I'm trying to create my own simpl php router to reuse in my next projects
+I'm trying to create my own simple php router to reuse in my next projects
 
