@@ -11,17 +11,18 @@ Class Request{
 		$common = Request::getCommonPath( array($script,$url));
 		$common = trim($common,'/');
 		
-		$r = substr($r,strlen($common));
+		$r = trim(substr($r,strlen($common)),'/');
 
 		$r = explode('/', $r);
-
+		
 		return array(
-			"controller" => isset($r[0]) ? $r[0] : 'Default' ,
-			"action" => isset($r[1]) ? $r[1] : 'Default',
+			"controller" => (isset($r[0]) && $r[0] != '') ? $r[0] : 'Default' ,
+			"action" => (isset($r[1]) && $r[1]) ? $r[1] : 'Default',
 			"params" => array_slice($r, 2) );
 	}
 
 	static function getCommonPath($paths) {
+
 		$lastOffset = 1;
 		$common = '/';
 		while (($index = strpos($paths[0], '/', $lastOffset)) !== FALSE) {
