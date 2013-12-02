@@ -1,5 +1,6 @@
 <?php
 
+
 Class Core {
 
 	function __construct()
@@ -7,11 +8,10 @@ Class Core {
 
 	}
 
-	/*
-	*Loading all needed objects
-	 */
+
 	function start()
 	{
+		$req = Request::parse_URL();
 		
 	}
 
