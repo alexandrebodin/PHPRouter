@@ -1,42 +1,37 @@
 <?php
 
 namespace PHPRouter\Foundation;
+use PHPRouter\Controllers;
+
 
 Class Core {
 
-	function __construct()
-	{
-
-	}
-
 	function start()
 	{
-		$req = Request::parse_URL();
-		if ($controller = $this->createController($req['controller']))
+			
+		$req = new Request();
+		$req->parse_URL_fromGlobal();
+
+		if ($controller = $this->createController($req->controller)){		
+			$action = $req->action.'Action';
+			if ( method_exists($controller, $action)){
+				call_user_func_array( array( $controller , $action ), array($req->params) );
+			}
+			else{
+				echo 'no action';
+			}
+		}
+		else
 		{
-			$action = $req['action'].'Action';
-			call_user_func_array( array( $controller , $action ),$req['params']);
-		}	
+			echo 'no page found';
+		}
 	}
 
 	function createController($ctrl)
 	{
-		$name = $ctrl.'Controller';
-		$file = __DIR__.'/../controller/'.$name.'.php';
-		
-		if(file_exists($file))
-		{
-			require $file;
-			return new $name();
-		}
-		else return false;
+		$name =  'PHPRouter\\Controllers\\'.$ctrl.'Controller';
+		return class_exists($name) ? new $name() : false;		
 		
 	}
-
-
-	function end()
-	{
-
-	}
-
+	
 }
