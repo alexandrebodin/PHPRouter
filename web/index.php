@@ -10,6 +10,4 @@ $core = new \PHPRouter\Foundation\Core();
 $core->start();
 
 
-$core->end();
-
 ?>
