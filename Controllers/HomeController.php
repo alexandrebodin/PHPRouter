@@ -1,5 +1,7 @@
 <?php
 
+namespace PHPRouter\Controllers;
+
 class HomeController {
 	
 	function DefaultAction()
