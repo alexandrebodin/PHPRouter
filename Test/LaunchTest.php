@@ -1,12 +1,18 @@
 <?php
 
-require_once 'core/Core.php';
+
+require __DIR__.'/../vendor/autoload.php';
 
 class LaunchTest extends PHPUnit_Framework_TestCase
 {
+	/*
+	*@test
+	 */
 	 function testSetUp()
 	{
-		$this->assertInstanceOf('Core', new Core());
+		$this->assertInstanceOf('PHPRouter\Foundation\Core', new PHPRouter\Foundation\Core());
 	}
+
+
 
 }
