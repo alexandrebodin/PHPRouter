@@ -1,4 +1,4 @@
-https://travis-ci.org/Sp4ceB1rd/PHPRouter.png?branch=master
+![image](https://travis-ci.org/Sp4ceB1rd/PHPRouter.png?branch=master)
 
 #PHPRouter
 
